@@ -1,92 +1,73 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
   <title>ブラックサンタの物語</title>
+  <link href="https://cdn.jsdelivr.net/npm/page-flip/dist/page-flip.browser.min.css" rel="stylesheet" />
   <style>
     body {
       margin: 0;
-      font-family: "serif";
-      background: #f9f4ef;
-      color: #333;
-    }
-    .book {
-      width: 100vw;
-      height: 100vh;
+      background: #f0f0f0;
       display: flex;
-      flex-direction: column;
       justify-content: center;
       align-items: center;
-      padding: 2em;
-      text-align: center;
+      height: 100vh;
+      font-family: 'serif';
+    }
+    #flipbook {
+      width: 80vw;
+      height: 90vh;
     }
     .page {
-      display: none;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 2rem;
+      background-color: #fff8f0;
       font-size: 1.8rem;
-      line-height: 1.8;
-    }
-    .active {
-      display: block;
-    }
-    .buttons {
-      margin-top: 2em;
-    }
-    button {
-      padding: 0.6em 1.5em;
-      margin: 0 1em;
-      font-size: 1rem;
-      border: none;
-      background-color: #c0392b;
-      color: white;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-    button:hover {
-      background-color: #a93226;
+      text-align: center;
     }
   </style>
 </head>
 <body>
 
-<div class="book">
-  <div class="page active">みなさんは「ブラックサンタ」をご存知ですか？</div>
-  <div class="page">赤い帽子のサンタさんは、<br>いい子の子どもたちにプレゼントを届けてくれる人です。</div>
-  <div class="page">でもその裏には…<br>悪い子のもとに現れていたずらをする「ブラックサンタ」がいるのです。</div>
-  <div class="page">けれど今年は、いい子ばかりで<br>ブラックサンタの出番がなくなってしまいました。</div>
-  <div class="page">怒ったブラックサンタは<br>サンタさんの「プレゼントリスト」を隠してしまったのです！</div>
-  <div class="page">このままでは、クリスマスにプレゼントを配れません！</div>
-  <div class="page">そこでお願いがあります。<br>サンタさんのお手伝いになって、リストを見つけてください。</div>
-  <div class="page">そして今度は――あなたがサンタクロースに！</div>
+<div id="flipbook"></div>
 
-  <div class="buttons">
-    <button onclick="prevPage()">◀ 戻る</button>
-    <button onclick="nextPage()">▶ 次へ</button>
-  </div>
-</div>
-
+<script src="https://cdn.jsdelivr.net/npm/page-flip/dist/page-flip.browser.min.js"></script>
 <script>
-  const pages = document.querySelectorAll('.page');
-  let current = 0;
+  const book = document.getElementById("flipbook");
+  const pageTexts = [
+    "みなさんは「ブラックサンタ」をご存知ですか？",
+    "赤い帽子のサンタさんは、いい子の子どもにプレゼントを届けてくれる人です。",
+    "でもその裏には…いたずら好きな『ブラックサンタ』がいます。",
+    "今年はいい子ばかりでブラックサンタの出番がありません。",
+    "怒ったブラックサンタはプレゼントリストを隠してしまったのです！",
+    "このままではクリスマスにプレゼントを配れません。",
+    "サンタさんのお手伝いになってリストを見つけてください！",
+    "そして今度は——あなたがサンタクロースになる番です！"
+  ];
 
-  function showPage(index) {
-    pages.forEach((page, i) => {
-      page.classList.toggle('active', i === index);
-    });
-  }
+  const pageFlip = new St.PageFlip(book, {
+    width: 600,
+    height: 800,
+    size: 'stretch',
+    minWidth: 315,
+    maxWidth: 1000,
+    minHeight: 400,
+    maxHeight: 1350,
+    maxShadowOpacity: 0.5,
+    showCover: true,
+    mobileScrollSupport: false
+  });
 
-  function nextPage() {
-    if (current < pages.length - 1) {
-      current++;
-      showPage(current);
-    }
-  }
+  const pages = pageTexts.map(text => {
+    const div = document.createElement("div");
+    div.className = "page";
+    div.innerHTML = text;
+    return { element: div };
+  });
 
-  function prevPage() {
-    if (current > 0) {
-      current--;
-      showPage(current);
-    }
-  }
+  pageFlip.loadFromHTML(pages);
 </script>
 
 </body>
