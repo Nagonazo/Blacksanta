@@ -3,7 +3,6 @@
 <head>
   <meta charset="UTF-8">
   <title>ブラックサンタの物語</title>
-  <link href="https://cdn.jsdelivr.net/npm/page-flip/dist/page-flip.browser.min.css" rel="stylesheet" />
   <style>
     body {
       margin: 0;
@@ -15,7 +14,7 @@
       font-family: 'serif';
     }
     #flipbook {
-      width: 80vw;
+      width: 90vw;
       height: 90vh;
     }
     .page {
@@ -26,6 +25,7 @@
       background-color: #fff8f0;
       font-size: 1.8rem;
       text-align: center;
+      box-shadow: 0 0 20px rgba(0,0,0,0.2);
     }
   </style>
 </head>
@@ -33,9 +33,12 @@
 
 <div id="flipbook"></div>
 
+<!-- PageFlip.jsのライブラリ（CDN） -->
 <script src="https://cdn.jsdelivr.net/npm/page-flip/dist/page-flip.browser.min.js"></script>
+
 <script>
   const book = document.getElementById("flipbook");
+
   const pageTexts = [
     "みなさんは「ブラックサンタ」をご存知ですか？",
     "赤い帽子のサンタさんは、いい子の子どもにプレゼントを届けてくれる人です。",
@@ -57,9 +60,10 @@
     maxHeight: 1350,
     maxShadowOpacity: 0.5,
     showCover: true,
-    mobileScrollSupport: false
+    mobileScrollSupport: true
   });
 
+  // 各ページを生成
   const pages = pageTexts.map(text => {
     const div = document.createElement("div");
     div.className = "page";
