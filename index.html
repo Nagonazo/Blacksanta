@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <title>ブラックサンタの物語</title>
+  <style>
+    body {
+      margin: 0;
+      background: #000;
+      color: #fff;
+      font-family: 'serif';
+      overflow: hidden;
+    }
+    .slide {
+      position: absolute;
+      width: 100%;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      transition: opacity 1.5s ease-in-out;
+      font-size: 2rem;
+      padding: 1em;
+      text-align: center;
+      background-size: cover;
+      background-position: center;
+    }
+    .active {
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="slide active" style="background-image: url('https://source.unsplash.com/1600x900/?night,snow');">
+    皆さんは「ブラックサンタ」をご存知ですか？
+  </div>
+  <div class="slide" style="background-image: url('https://source.unsplash.com/1600x900/?santa,night');">
+    赤い帽子のサンタさんは、<br>いい子にプレゼントを届けます。
+  </div>
+  <div class="slide" style="background-image: url('https://source.unsplash.com/1600x900/?dark,forest');">
+    でも…ブラックサンタが<br>プレゼントリストを隠してしまった！
+  </div>
+  <div class="slide" style="background-image: url('https://source.unsplash.com/1600x900/?treasure,map');">
+    サンタのお手伝いとして<br>リストを探しに行こう！
+  </div>
+  <div class="slide" style="background-image: url('https://source.unsplash.com/1600x900/?snowman,christmas');">
+    そして――<br>今度はあなたがサンタになる番です！
+  </div>
+
+  <script>
+    const slides = document.querySelectorAll('.slide');
+    let current = 0;
+
+    setInterval(() => {
+      slides[current].classList.remove('active');
+      current = (current + 1) % slides.length;
+      slides[current].classList.add('active');
+    }, 5000); // 5秒ごとに切り替え
+  </script>
+</body>
+</html>
