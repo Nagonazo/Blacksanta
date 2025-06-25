@@ -6,58 +6,88 @@
   <style>
     body {
       margin: 0;
-      background: #000;
-      color: #fff;
-      font-family: 'serif';
-      overflow: hidden;
+      font-family: "serif";
+      background: #f9f4ef;
+      color: #333;
     }
-    .slide {
-      position: absolute;
-      width: 100%;
+    .book {
+      width: 100vw;
       height: 100vh;
       display: flex;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
-      opacity: 0;
-      transition: opacity 1.5s ease-in-out;
-      font-size: 2rem;
-      padding: 1em;
+      padding: 2em;
       text-align: center;
-      background-size: cover;
-      background-position: center;
+    }
+    .page {
+      display: none;
+      font-size: 1.8rem;
+      line-height: 1.8;
     }
     .active {
-      opacity: 1;
+      display: block;
+    }
+    .buttons {
+      margin-top: 2em;
+    }
+    button {
+      padding: 0.6em 1.5em;
+      margin: 0 1em;
+      font-size: 1rem;
+      border: none;
+      background-color: #c0392b;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #a93226;
     }
   </style>
 </head>
 <body>
 
-  <div class="slide active" style="background-image: url('https://source.unsplash.com/1600x900/?night,snow');">
-    皆さんは「ブラックサンタ」をご存知ですか？
-  </div>
-  <div class="slide" style="background-image: url('https://source.unsplash.com/1600x900/?santa,night');">
-    赤い帽子のサンタさんは、<br>いい子にプレゼントを届けます。
-  </div>
-  <div class="slide" style="background-image: url('https://source.unsplash.com/1600x900/?dark,forest');">
-    でも…ブラックサンタが<br>プレゼントリストを隠してしまった！
-  </div>
-  <div class="slide" style="background-image: url('https://source.unsplash.com/1600x900/?treasure,map');">
-    サンタのお手伝いとして<br>リストを探しに行こう！
-  </div>
-  <div class="slide" style="background-image: url('https://source.unsplash.com/1600x900/?snowman,christmas');">
-    そして――<br>今度はあなたがサンタになる番です！
-  </div>
+<div class="book">
+  <div class="page active">みなさんは「ブラックサンタ」をご存知ですか？</div>
+  <div class="page">赤い帽子のサンタさんは、<br>いい子の子どもたちにプレゼントを届けてくれる人です。</div>
+  <div class="page">でもその裏には…<br>悪い子のもとに現れていたずらをする「ブラックサンタ」がいるのです。</div>
+  <div class="page">けれど今年は、いい子ばかりで<br>ブラックサンタの出番がなくなってしまいました。</div>
+  <div class="page">怒ったブラックサンタは<br>サンタさんの「プレゼントリスト」を隠してしまったのです！</div>
+  <div class="page">このままでは、クリスマスにプレゼントを配れません！</div>
+  <div class="page">そこでお願いがあります。<br>サンタさんのお手伝いになって、リストを見つけてください。</div>
+  <div class="page">そして今度は――あなたがサンタクロースに！</div>
 
-  <script>
-    const slides = document.querySelectorAll('.slide');
-    let current = 0;
+  <div class="buttons">
+    <button onclick="prevPage()">◀ 戻る</button>
+    <button onclick="nextPage()">▶ 次へ</button>
+  </div>
+</div>
 
-    setInterval(() => {
-      slides[current].classList.remove('active');
-      current = (current + 1) % slides.length;
-      slides[current].classList.add('active');
-    }, 5000); // 5秒ごとに切り替え
-  </script>
+<script>
+  const pages = document.querySelectorAll('.page');
+  let current = 0;
+
+  function showPage(index) {
+    pages.forEach((page, i) => {
+      page.classList.toggle('active', i === index);
+    });
+  }
+
+  function nextPage() {
+    if (current < pages.length - 1) {
+      current++;
+      showPage(current);
+    }
+  }
+
+  function prevPage() {
+    if (current > 0) {
+      current--;
+      showPage(current);
+    }
+  }
+</script>
+
 </body>
 </html>
