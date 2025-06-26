@@ -104,20 +104,26 @@
     starContainer.appendChild(star);
   }
 
-  // スクロール演出
+  // スクロール表示処理
   const sections = document.querySelectorAll('.section');
   function checkVisible() {
     const triggerBottom = window.innerHeight * 0.8;
     sections.forEach(section => {
       const rect = section.getBoundingClientRect();
-      if(rect.top < triggerBottom) {
+      if (rect.top < triggerBottom) {
         section.classList.add('visible');
       }
     });
   }
+
   window.addEventListener('scroll', checkVisible);
-  window.addEventListener('load', checkVisible);
+
+  window.addEventListener('DOMContentLoaded', () => {
+    checkVisible(); // ページ読み込み直後に実行
+    setTimeout(checkVisible, 500); // レイアウト安定後にも再チェック
+  });
 </script>
+  
 
 </body>
 </html>
