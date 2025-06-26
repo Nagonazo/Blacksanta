@@ -1,26 +1,67 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>ブラックサンタの物語</title>
-  <link rel="stylesheet" href="style.css" />
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/gsap.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/ScrollTrigger.min.js"></script>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ブラックサンタ物語</title>
+<style>
+  body {
+    margin: 0; padding: 0; background: #111;
+    color: #fff; font-family: 'Yu Gothic', 'Arial', sans-serif;
+  }
+  .section {
+    min-height: 100vh;
+    display: flex; justify-content: center; align-items: center;
+    padding: 2rem;
+    box-sizing: border-box;
+    text-align: center;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 1s ease-out;
+  }
+  .section.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .text-block {
+    max-width: 800px;
+    font-size: 1.6rem;
+    line-height: 1.7;
+  }
+</style>
 </head>
 <body>
-  <div class="container">
-    <section class="panel"><div class="text">皆さんは「ブラックサンタ」をご存知ですか？</div></section>
-    <section class="panel"><div class="text">よく知られた赤い帽子のサンタさんは、いい子にしていた子どもたちにプレゼントを届けます。</div></section>
-    <section class="panel"><div class="text">でもその影にはもうひとり、わるい子にいたずらをする「ブラックサンタ」がいると言われているのです。</div></section>
-    <section class="panel"><div class="text">ところが今年は…世界中の子どもたちがみんな、いい子にしていたものだから、</div></section>
-    <section class="panel"><div class="text">ブラックサンタの出番がない！</div></section>
-    <section class="panel"><div class="text">ふてくされたブラックサンタは、なんと…サンタさんのプレゼントリストを隠してしまいました！</div></section>
-    <section class="panel"><div class="text">🎁 クリスマスイブはもうすぐそこ。このままでは、プレゼントを届けられないかもしれません。</div></section>
-    <section class="panel"><div class="text">🎅 「サンタさんのお手伝い」になって、隠されたプレゼントリストを見つけてください。</div></section>
-    <section class="panel"><div class="text">そして――リストが見つかったその時は、今度はあなたがサンタクロース。</div></section>
-    <section class="panel"><div class="text">🌟 さあ、物語の始まりです。サンタクロースの「本当の魔法」は、“誰かを想う気持ち”なのかもしれませんね…</div></section>
-  </div>
-  <script src="script.js"></script>
+
+<div id="container">
+  <div class="section"><div class="text-block">ある冬の夜、星がまたたく北の空に、そっと雪が舞い始めました。</div></div>
+  <div class="section"><div class="text-block">静かな夜にひとつだけ、ちょっぴり不思議なお話をしましょう。</div></div>
+  <div class="section"><div class="text-block">みなさんはご存じでしょうか？サンタクロースには、もう一人“影のような存在”がいることを――。</div></div>
+  <div class="section"><div class="text-block">赤い帽子と優しい笑顔で、世界中の子どもたちに夢を届ける「サンタさん」。</div></div>
+  <div class="section"><div class="text-block">でもその陰には、悪い子のところへ現れていたずらをする、黒い服の“ブラックサンタ”がいたのです。</div></div>
+  <div class="section"><div class="text-block">ところが、今年はちょっと違いました。世界中の子どもたちが、みんなとってもいい子にしていたのです。ブラックサンタの出番が…なかったのです！</div></div>
+  <div class="section"><div class="text-block">ふてくされたブラックサンタは、大切な “プレゼントリスト” を、魔法で隠してしまいました。あの光るリストがなければ…サンタさんは誰にもプレゼントを届けられません。</div></div>
+  <div class="section"><div class="text-block">イブの夜は、もうすぐそこ。このままでは、笑顔が止まってしまう。そこで――</div></div>
+  <div class="section"><div class="text-block">あなたにお願いがあります。サンタさんのお手伝いになって、隠された“魔法のプレゼントリスト”を見つけてくれませんか？</div></div>
+  <div class="section"><div class="text-block">星のかけら、雪の音、空に浮かぶ光。きっとヒントは、あなたの心の中にあるはず。</div></div>
+  <div class="section"><div class="text-block">そして――リストを見つけたそのときは、今度はあなたがサンタクロース。誰かを想うその気持ちが、この世界にほんとうの魔法を届けるのです。</div></div>
+  <div class="section"><div class="text-block">物語は、あなたの手で動き出します。</div></div>
+</div>
+
+<script>
+  // スクロールで表示されるアニメーション処理
+  const sections = document.querySelectorAll('.section');
+  function checkVisible() {
+    const triggerBottom = window.innerHeight * 0.8;
+    sections.forEach(section => {
+      const rect = section.getBoundingClientRect();
+      if(rect.top < triggerBottom) {
+        section.classList.add('visible');
+      }
+    });
+  }
+  window.addEventListener('scroll', checkVisible);
+  window.addEventListener('load', checkVisible);
+</script>
+
 </body>
 </html>
