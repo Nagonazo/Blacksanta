@@ -1,6 +1,133 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ブラックサンタ物語</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: 'Yu Gothic', 'Arial', sans-serif;
+      background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
+      overflow-x: hidden;
+      color: white;
+      position: relative;
+    }
+
+    /* ★星の背景★ */
+    .stars {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .star {
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      background: white;
+      border-radius: 50%;
+      opacity: 0.8;
+      animation: twinkle 2s infinite ease-in-out alternate;
+    }
+
+    @keyframes twinkle {
+      from { opacity: 0.3; transform: scale(1); }
+      to   { opacity: 1; transform: scale(1.5); }
+    }
+
+    .section {
+      min-height: 80vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 1rem 2rem;
+      box-sizing: border-box;
+      text-align: center;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 1s ease-out;
+      position: relative;
+      z-index: 1; /* ← テキストは星の上に */
+    }
+
+    .section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .text-block {
+      max-width: 800px;
+      font-size: 1.6rem;
+      line-height: 1.7;
+    }
+  </style>
+</head>
+<body>
+
+<!-- 星空レイヤー -->
+<div class="stars" id="stars"></div>
+
+<!-- 本文 -->
+<div id="container">
+  <div class="section"><div class="text-block">ある冬の夜<br>星がまたたく北の空に<br>そっと雪が舞い始めました。</div></div>
+  <div class="section"><div class="text-block">静かな夜にひとつだけ<br>ちょっぴり不思議なお話をしましょう。</div></div>
+  <div class="section"><div class="text-block">みなさんはご存じでしょうか？<br>サンタクロースには<br>もう一人“影のような存在”がいることを――。</div></div>
+  <div class="section"><div class="text-block">赤い帽子と優しい笑顔で<br>世界中の子どもたちに夢を届ける「サンタさん」。</div></div>
+  <div class="section"><div class="text-block">でもその陰には、<br>悪い子のところへ現れて"いたずら"をする<br>黒い服の“ブラックサンタ”がいたのです。</div></div>
+  <div class="section"><div class="text-block">ところが、<br>今年はちょっと違いました。<br>世界中の子どもたちが、<br>みんなとってもいい子にしていたのです。<br>なんとブラックサンタの出番が…なかったのです！</div></div>
+  <div class="section"><div class="text-block">ふてくされたブラックサンタは<br>大切な “プレゼントリスト” を<br>魔法で隠してしまいました。<br>あの光るリストがなければ…<br>サンタさんは誰にもプレゼントを届けられません。</div></div>
+  <div class="section"><div class="text-block">イブの夜は、もうすぐそこ。<br>このままでは、<br>子供たちの笑顔が見られない。<br>そこで――</div></div>
+  <div class="section"><div class="text-block">あなたにお願いがあります。<br>サンタさんのお手伝いになって、<br>隠された“魔法のプレゼントリスト”を見つけてくれませんか？</div></div>
+  <div class="section"><div class="text-block">星のかけら、<br>雪の音、<br>空に浮かぶ光。<br>きっとヒントは、<br><br>あなたの心の中にあるはず。</div></div>
+  <div class="section"><div class="text-block">そして――<br>リストを見つけたそのときは、<br>今度はあなたがサンタクロース。<br>誰かを想うその気持ちが、<br>この世界にほんとうの魔法を届けるのです。</div></div>
+  <div class="section"><div class="text-block">物語は、あなたの手で動き出します。</div></div>
+</div>
+
+
+<!-- JS: スクロール表示 -->
+<script>
+  // スター生成
+  const starContainer = document.getElementById('stars');
+  for(let i = 0; i < 100; i++) {
+    const star = document.createElement('div');
+    star.className = 'star';
+    star.style.top = Math.random() * 100 + '%';
+    star.style.left = Math.random() * 100 + '%';
+    star.style.animationDelay = Math.random() * 2 + 's';
+    starContainer.appendChild(star);
+  }
+
+  // スクロール演出
+  const sections = document.querySelectorAll('.section');
+  function checkVisible() {
+    const triggerBottom = window.innerHeight * 0.8;
+    sections.forEach(section => {
+      const rect = section.getBoundingClientRect();
+      if(rect.top < triggerBottom) {
+        section.classList.add('visible');
+      }
+    });
+  }
+  window.addEventListener('scroll', checkVisible);
+  window.addEventListener('load', checkVisible);
+</script>
+
+</body>
+</html>
+
+
+
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>ブラックサンタ物語</title><title>ブラックサンタ物語</title>
