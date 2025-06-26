@@ -3,7 +3,6 @@ body, html {
   margin: 0;
   padding: 0;
   font-family: 'Arial', sans-serif;
-  background: #000;
   color: #fff;
   overflow-x: hidden;
 }
@@ -17,6 +16,10 @@ section.panel {
   align-items: center;
   padding: 2rem;
   box-sizing: border-box;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 .text {
   font-size: 2em;
@@ -25,3 +28,15 @@ section.panel {
   opacity: 0;
   transform: translateY(50px);
 }
+
+/* 背景ごとのクラス */
+.bg1 { background-image: url("images/starsky.jpg"); }
+.bg2 { background-image: url("images/santa_flying.jpg"); }
+.bg3 { background-image: url("images/dark_forest.jpg"); }
+.bg4 { background-image: url("images/earth_map.jpg"); }
+.bg5 { background-image: url("images/black_santa_angry.jpg"); }
+.bg6 { background-image: url("images/hidden_giftroom.jpg"); }
+.bg7 { background-image: url("images/christmas_night.jpg"); }
+.bg8 { background-image: url("images/map_clues.jpg"); }
+.bg9 { background-image: url("images/santa_handoff.jpg"); }
+.bg10 { background-image: url("images/aurora_snow.jpg"); }
