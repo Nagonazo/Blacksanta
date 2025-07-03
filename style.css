@@ -86,6 +86,22 @@ body {
   box-shadow: 0 0 20px rgba(255,255,255,0.6);
 }
 
+.button-red {
+  background-color: #d9534f; /* Bootstrap風の赤 */
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  font-size: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 10px;
+}
+
+.button-red:hover {
+  background-color: #c9302c;
+}
+
 /* --------- 画像表示 --------- */
 img.story-image {
   max-width: 100%;
