@@ -1,27 +1,87 @@
-
-body, html {
+/* --------- 基本設定 --------- */
+body {
   margin: 0;
-  padding: 0;
-  font-family: 'Arial', sans-serif;
-  background: #000;
-  color: #fff;
+  background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
+  font-family: 'Yu Gothic', 'Arial', sans-serif;
+  color: white;
+  text-align: center;
+  padding: 3rem 1rem;
   overflow-x: hidden;
 }
-.container {
+
+/* --------- 星空背景 --------- */
+.stars {
+  position: fixed;
   width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  pointer-events: none;
 }
-section.panel {
-  height: 60vh;
+
+.star {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: white;
+  border-radius: 50%;
+  opacity: 0.8;
+  animation: twinkle 2s infinite ease-in-out alternate;
+}
+
+@keyframes twinkle {
+  from { opacity: 0.3; transform: scale(1); }
+  to   { opacity: 1; transform: scale(1.5); }
+}
+
+/* --------- セクション/テキスト --------- */
+.section {
+  min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 2rem;
+  padding: 1rem 2rem;
   box-sizing: border-box;
-}
-.text {
-  font-size: 2em;
-  max-width: 800px;
   text-align: center;
   opacity: 0;
-  transform: translateY(50px);
+  transform: translateY(30px);
+  transition: all 1s ease-out;
+  position: relative;
+  z-index: 1;
+}
+
+.section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.text-block, .content {
+  position: relative;
+  z-index: 1;
+  max-width: 800px;
+  margin: auto;
+  font-size: 1.6rem;
+  line-height: 2.2rem;
+  white-space: pre-line;
+}
+
+/* --------- ボタン共通 --------- */
+.button, .next-button {
+  margin-top: 2rem;
+  padding: 1rem 2rem;
+  font-size: 1.4rem;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: white;
+  background: linear-gradient(90deg, #66ccff, #3399ff);
+  box-shadow: 0 0 10px rgba(255,255,255,0.3);
+}
+
+.button:hover, .next-button:hover {
+  background: linear-gradient(90deg, #3399ff, #66ccff);
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(255,255,255,0.6);
 }
