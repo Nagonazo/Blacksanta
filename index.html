@@ -67,6 +67,27 @@
       font-size: 1.6rem;
       line-height: 1.7;
     }
+
+    
+    /* ボタン */
+    .next-button {
+      margin-top: 2rem;
+      padding: 1rem 2rem;
+      font-size: 1.4rem;
+      border: none;
+      border-radius: 10px;
+      background: linear-gradient(90deg, #ff6666, #ff9999);
+      color: white;
+      cursor: pointer;
+      box-shadow: 0 0 10px rgba(255,255,255,0.3);
+      transition: all 0.3s ease;
+    }
+
+    .next-button:hover {
+      background: linear-gradient(90deg, #ff9999, #ff6666);
+      box-shadow: 0 0 20px rgba(255,255,255,0.6);
+      transform: scale(1.05);
+    }
   </style>
 </head>
 <body>
@@ -90,6 +111,14 @@
   <div class="section"><div class="text-block">星のかけら、<br>雪の音、<br>空に浮かぶ光。<br>きっとヒントは、<br><br>あなたの心の中にあるはず。</div></div>
   <div class="section"><div class="text-block">そして――<br>リストを見つけたそのときは、<br>今度はあなたがサンタクロース。<br>誰かを想うその気持ちが、<br>この世界にほんとうの魔法を届けるのです。</div></div>
   <div class="section"><div class="text-block">物語は、あなたの手で動き出します。</div></div>
+  
+  <!-- ▶︎ ボタン付き最終ページ -->
+  <div class="section">
+    <div class="text-block">
+      <p>物語の扉が、あなたを待っています。</p>
+      <button onclick="location.href='part1.html'" class="next-button">物語を進める →</button>
+    </div>
+  </div>
 </div>
 
 
