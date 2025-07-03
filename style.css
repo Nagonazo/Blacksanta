@@ -86,20 +86,23 @@ body {
   box-shadow: 0 0 20px rgba(255,255,255,0.6);
 }
 
-.button-red {
-  background-color: #d9534f; /* Bootstrap風の赤 */
-  color: white;
+.button.red {
+  margin-top: 2rem;
+  padding: 1rem 2rem;
+  font-size: 1.4rem;
   border: none;
-  padding: 12px 20px;
-  font-size: 1rem;
-  border-radius: 8px;
+  border-radius: 10px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
-  margin-top: 10px;
+  transition: all 0.3s ease;
+  color: white;
+  background: linear-gradient(90deg, #ff6666, #cc3333);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
 }
 
-.button-red:hover {
-  background-color: #c9302c;
+.button.red:hover {
+  background: linear-gradient(90deg, #cc3333, #ff6666);
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.6);
 }
 
 /* --------- 画像表示 --------- */
