@@ -85,3 +85,12 @@ body {
   transform: scale(1.05);
   box-shadow: 0 0 20px rgba(255,255,255,0.6);
 }
+
+/* --------- 画像表示 --------- */
+img.story-image {
+  max-width: 100%;
+  height: auto;
+  margin-top: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(255,255,255,0.3);
+}
